@@ -1,6 +1,6 @@
 {
   "name": "ti-rate-reminder",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Rate reminder for Titanium apps",
   "license": "MIT",
   "repository": "sindresorhus/ti-rate-reminder",
