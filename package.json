@@ -1,30 +1,30 @@
 {
-  "name": "ti-rate-reminder",
-  "version": "1.0.1",
-  "description": "Rate reminder for Titanium apps",
-  "license": "MIT",
-  "repository": "sindresorhus/ti-rate-reminder",
-  "author": {
-    "name": "Sindre Sorhus",
-    "email": "sindresorhus@gmail.com",
-    "url": "http://sindresorhus.com"
-  },
-  "engines": {
-    "node": ">=0.10.0"
-  },
-  "files": [
-    "index.js",
-    "i18n"
-  ],
-  "keywords": [
-    "ti",
-    "titanium",
-    "mobile",
-    "rate",
-    "rater",
-    "reminder",
-    "app",
-    "appirater",
-    "review"
-  ]
+	"name": "ti-rate-reminder",
+	"version": "1.0.1",
+	"description": "Rate reminder for Titanium apps",
+	"license": "MIT",
+	"repository": "sindresorhus/ti-rate-reminder",
+	"author": {
+		"name": "Sindre Sorhus",
+		"email": "sindresorhus@gmail.com",
+		"url": "sindresorhus.com"
+	},
+	"engines": {
+		"node": ">=6"
+	},
+	"files": [
+		"index.js",
+		"i18n"
+	],
+	"keywords": [
+		"ti",
+		"titanium",
+		"mobile",
+		"rate",
+		"rater",
+		"reminder",
+		"app",
+		"appirater",
+		"review"
+	]
 }

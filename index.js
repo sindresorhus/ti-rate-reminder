@@ -1,6 +1,6 @@
 'use strict';
-module.exports = function (opts) {
-	if ((Ti.Platform.osname === 'iphone' || Ti.Platform.osname === 'ipad') && !opts.appleAppId) {
+module.exports = options => {
+	if ((Ti.Platform.osname === 'iphone' || Ti.Platform.osname === 'ipad') && !options.appleAppId) {
 		throw new Error('`appleAppId` option required');
 	}
 
@@ -8,8 +8,8 @@ module.exports = function (opts) {
 		Ti.App.Properties.setInt('rate-reminder', 0);
 	}
 
-	var interval = typeof opts.interval === 'number' ? opts.interval : 10;
-	var launchCount = Ti.App.Properties.getInt('rate-reminder');
+	const interval = typeof options.interval === 'number' ? options.interval : 10;
+	let launchCount = Ti.App.Properties.getInt('rate-reminder');
 
 	if (launchCount === -1) {
 		return;
@@ -20,7 +20,7 @@ module.exports = function (opts) {
 		return;
 	}
 
-	var alertDialog = Titanium.UI.createAlertDialog({
+	const alertDialog = Titanium.UI.createAlertDialog({
 		title: L('rate_title', 'Rate this app'),
 		message: L('rate_message', 'Would you mind taking a moment to rate this app?'),
 		buttonNames: [
@@ -31,24 +31,24 @@ module.exports = function (opts) {
 		cancel: 2
 	});
 
-	alertDialog.addEventListener('click', function (e) {
-		if (e.index === 0) {
+	alertDialog.addEventListener('click', event => {
+		if (event.index === 0) {
 			Ti.App.Properties.setInt('rate-reminder', -1);
 
 			if (Ti.Platform.osname === 'android') {
-				Ti.Platform.openURL('market://details?id=' + Ti.App.id);
+				Ti.Platform.openURL(`market://details?id=${Ti.App.id}`);
 			} else {
-				Ti.Platform.openURL('itms-apps://itunes.apple.com/app/id' + opts.appleAppId);
+				Ti.Platform.openURL(`itms-apps://itunes.apple.com/app/id${options.appleAppId}`);
 			}
 		}
 
-		if (e.index === 1) {
-			// reset the interval
+		if (event.index === 1) {
+			// Reset the interval
 			Ti.App.Properties.setInt('rate-reminder', 0);
 		}
 
-		if (e.index === 2) {
-			// never ask again
+		if (event.index === 2) {
+			// Never ask again
 			Ti.App.Properties.setInt('rate-reminder', -1);
 		}
 	});
